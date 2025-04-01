@@ -3,9 +3,18 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "./dist-react",
-    
+    "declaration": true,
+    "declarationMap": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+    "@/*": ["./src/ui/*"],
+    "@components/*": ["./src/ui/components/*"],
+    "@lib/*": ["./src/ui/lib/*"],
+    "@hooks/*": ["./src/ui/hooks/*"]
+}
   },
-  "include": ["src"],
+  // "include": ["src"],
   "exclude": ["src/electron"],
   "references": [
     { "path": "./tsconfig.app.json" },
