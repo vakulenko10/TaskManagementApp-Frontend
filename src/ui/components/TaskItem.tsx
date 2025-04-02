@@ -37,9 +37,9 @@ const TaskItem: React.FC<{
     notify({title: 'Task deleted', description: 'Changes saved successfully.' })
   }
   return (
-    <div className="p-4 rounded-xl bg-white shadow flex flex-col gap-2">
-      <div className="text-lg font-semibold">{task.title}</div>
-      <div>{task.description}</div>
+    <div className="p-4 rounded-xl bg-white shadow flex flex-col gap-2 box-border overflow-hidden">
+      <h1 className="text-4xl uppercase font-semibold whitespace-pre-wrap break-words ">{task.title}</h1>
+      <p  className="whitespace-pre-wrap break-words">{task.description}</p>
       <div>Status: {task.is_completed ? ' Done' : ' Not done'}</div>
       <div className="flex gap-2 mt-2">
         <Dialog open={editing} onOpenChange={setEditing}>
@@ -50,7 +50,7 @@ const TaskItem: React.FC<{
             <DialogHeader>
               <DialogTitle>Edit Task</DialogTitle>
             </DialogHeader>
-            <div className="flex flex-col gap-4 py-4">
+            <div className="flex flex-col gap-4 py-4 relative box-border overflow-hidden">
               <Input
                 placeholder="Title"
                 value={title}
@@ -60,6 +60,7 @@ const TaskItem: React.FC<{
                 placeholder="Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+                className="max-h-[150px] whitespace-pre-wrap break-words"
               />
               <label className="flex items-center gap-2">
                 <Checkbox
@@ -71,15 +72,16 @@ const TaskItem: React.FC<{
             </div>
             <DialogFooter>
               <Button onClick={handleUpdate}>Save</Button>
+              <Button variant="destructive" onClick={handleDelete}>
+                Delete
+                </Button>
               <DialogClose asChild>
                 <Button variant="outline">Cancel</Button>
               </DialogClose>
             </DialogFooter>
           </DialogContent>
         </Dialog>
-        <Button variant="destructive" onClick={handleDelete}>
-          Delete
-        </Button>
+        
       </div>
     </div>
   );

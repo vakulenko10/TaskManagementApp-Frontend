@@ -36,7 +36,7 @@ const TaskForm: React.FC<{ onTaskAdded: () => void }> = ({ onTaskAdded }) => {
         <DialogHeader>
           <DialogTitle>Create New Task</DialogTitle>
         </DialogHeader>
-        <div className="flex flex-col gap-4 py-4">
+        <div className="flex flex-col gap-4 py-4 box-border overflow-hidden">
           <Input
             placeholder="Title"
             value={title}
@@ -46,6 +46,7 @@ const TaskForm: React.FC<{ onTaskAdded: () => void }> = ({ onTaskAdded }) => {
             placeholder="Description"
             value={description}
             onChange={e => setDescription(e.target.value)}
+            className="max-h-[150px] whitespace-pre-wrap break-words"
           />
         </div>
         <DialogFooter>
