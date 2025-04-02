@@ -3,8 +3,7 @@
 A lightweight and responsive **desktop task manager** built with:
 
 - 🖥️ **Electron** – to run as a native desktop app  
-- ⚛️ **React + Vite** – for fast and modern frontend  
-- 🐘 **PostgreSQL** – for local persistent data  
+- ⚛️ **React + Vite** – for fast and modern frontend
 - 🚀 100% offline capable, no cloud dependencies
 
 ---
@@ -13,9 +12,7 @@ A lightweight and responsive **desktop task manager** built with:
 
 - ✅ Create, update, delete tasks
 - 🔍 Search and filter tasks by completion status
-- 🗃️ Local PostgreSQL database support
 - 🪄 Clean UI with dialogs and notifications
-- 🧠 Self-contained and runs offline
 
 ---
 
