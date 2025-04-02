@@ -10,7 +10,7 @@ export interface Task {
 }
 
 export async function fetchAllTasks(): Promise<Task[]> {
-  const res = await fetch(`${API_URL}/tasks}`);
+  const res = await fetch(`${API_URL}/tasks`);
   return res.json();
 }
 
@@ -19,7 +19,7 @@ export async function createTask(
   description: string,
   isCompleted = false
 ): Promise<void> {
-  await fetch(`${API_URL}/tasks}`, {
+  await fetch(`${API_URL}/tasks`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ title, description, isCompleted }),
