@@ -1,54 +1,68 @@
-# React + TypeScript + Vite
+# ⚡ Task Management App (Electron + React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight and responsive **desktop task manager** built with:
 
-Currently, two official plugins are available:
+- 🖥️ **Electron** – to run as a native desktop app  
+- ⚛️ **React + Vite** – for fast and modern frontend  
+- 🐘 **PostgreSQL** – for local persistent data  
+- 🚀 100% offline capable, no cloud dependencies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 📦 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- ✅ Create, update, delete tasks
+- 🔍 Search and filter tasks by completion status
+- 🗃️ Local PostgreSQL database support
+- 🪄 Clean UI with dialogs and notifications
+- 🧠 Self-contained and runs offline
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🚀 Getting Started
+Make sure backend is running, so that frontend would have connection to the data
+
+### 1. 📥 Clone the repository
+
+```bash
+git clone https://github.com/vakulenko10/TaskManagementApp-Frontend.git .
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 2. Install dependencies
+```
+npm install
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### 3. Insert this line in your .env file
+```
+VITE_API_URL=http://localhost:3000
+```
+
+### 4. Run react dev mode
+run this in console
+```
+npm run dev:react
+```
+### 5. Build frontend dist-react folder for running electronjs 
+run this in console
+```
+npm run build
+```
+### 6.Run electron dev mode
+run this in console
+```
+npm run dev:electron
+```
+### 6. Create dist folder for the project with the exe inside for your OS
+from package.json
+```
+  "dist:mac": "npm run transpile:electron && npm run build && electron-builder --mac --arm64",
+  "dist:win": "npm run transpile:electron && npm run build && electron-builder --win --x64",
+  "dist:linux": "npm run transpile:electron && npm run build && electron-builder --linux --x64"
+```
+so just run any of this depending on your OS, for example:
+```
+npm run dist:win
 ```
