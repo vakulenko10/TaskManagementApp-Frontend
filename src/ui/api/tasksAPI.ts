@@ -1,4 +1,4 @@
-export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/tasks';
+export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export interface Task {
   id: string;
@@ -10,7 +10,7 @@ export interface Task {
 }
 
 export async function fetchAllTasks(): Promise<Task[]> {
-  const res = await fetch(API_URL);
+  const res = await fetch(`${API_URL}/tasks}`);
   return res.json();
 }
 
@@ -19,7 +19,7 @@ export async function createTask(
   description: string,
   isCompleted = false
 ): Promise<void> {
-  await fetch(API_URL, {
+  await fetch(`${API_URL}/tasks}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ title, description, isCompleted }),
@@ -40,17 +40,17 @@ export async function updateTask(
 }
 
 export async function deleteTask(id: string): Promise<void> {
-  await fetch(`${API_URL}/${id}`, {
+  await fetch(`${API_URL}/tasks/${id}`, {
     method: 'DELETE',
   });
 }
 
 export async function filterTasks(isCompleted: boolean): Promise<Task[]> {
-  const res = await fetch(`${API_URL}?completed=${isCompleted}`);
+  const res = await fetch(`${API_URL}/tasks?completed=${isCompleted}`);
   return res.json();
 }
 
 export async function searchTasks(query: string): Promise<Task[]> {
-  const res = await fetch(`${API_URL}?q=${encodeURIComponent(query)}`);
+  const res = await fetch(`${API_URL}/tasks?q=${encodeURIComponent(query)}`);
   return res.json();
 }
